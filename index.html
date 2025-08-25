@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clinéa Santé — Centre médical premium (Démo)</title>
+  <meta name="description" content="Centre médical premium. Spécialités, équipe, tarifs, parcours patient, FAQ et articles. Design luxe, images HD, mobile-first, FR/EN. Démo : CTA redirigent vers WhatsApp." />
+  <meta property="og:title" content="Clinéa Santé — Centre médical premium" />
+  <meta property="og:description" content="Design clinique luxe, images HD, parcours patient, FAQ. Démo FR/EN. CTA → WhatsApp." />
+  <meta name="theme-color" content="#0A6D77" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0B1F20;           /* encre profonde */
+      --ink-2:#305556;         /* texte secondaire */
+      --bg:#f6f7f4;            /* blanc cassé clinique */
+      --card:#ffffff;
+      --teal:#0A6D77;          /* bleu-vert santé chic */
+      --mint:#B7E4D8;          /* menthe douce */
+      --gold:#d5b887;          /* touche luxe subtile */
+      --muted:#7a8a8a;
+      --shadow:0 14px 40px rgba(10, 25, 25, .08);
+      --radius:20px;           /* plus doux que site 1 */
+      --maxw:1200px;
+      --footer:#0b1212;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.6}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin-inline:auto;padding-inline:22px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:999;background:rgba(246,247,244,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #e3e7e3}
+    .nav{display:flex;align-items:center;justify-content:space-between;min-height:74px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{font-family:"Playfair Display",serif;font-weight:700;font-size:24px;letter-spacing:.2px}
+    .logo-badge{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg, var(--teal), #064b52);color:#fff;font-weight:800;box-shadow:0 8px 20px rgba(6,75,82,.25)}
+    nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+    nav a{font-weight:700}
+    .actions{display:flex;align-items:center;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:.78rem 1.1rem;border-radius:14px;border:1px solid #dfe6e6;background:#fff;box-shadow:var(--shadow);font-weight:700}
+    .btn.primary{background:var(--teal);color:#fff;border-color:#064b52}
+    .btn.soft{background:#fff;color:var(--ink);}
+    .lang{border:1px solid #dfe6e6;background:#fff;border-radius:12px;padding:.5rem .8rem;font-weight:700}
+
+    /* Mobile menu */
+    .hamburger{display:none;flex-direction:column;gap:4px;border:0;background:#fff;padding:10px;border:1px solid #dfe6e6;border-radius:12px}
+    .hamburger span{width:26px;height:3px;background:#0d2b2d;border-radius:6px}
+    .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:.25s;z-index:999}
+    .backdrop.show{opacity:1;visibility:visible}
+    .mobile-drawer{position:fixed;top:0;right:0;height:100%;width:min(84vw,380px);transform:translateX(100%);transition:transform .35s ease;background:#fff;box-shadow:-28px 0 60px rgba(0,0,0,.22);z-index:1000;display:flex;flex-direction:column}
+    .mobile-drawer.open{transform:translateX(0)}
+    .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #eef2f2}
+    .drawer-head .title{font-weight:900}
+    .drawer-close{border:0;background:#0b1212;color:#fff;padding:.55rem .9rem;border-radius:12px;font-weight:800}
+    .drawer-body{padding:12px 6px;display:flex;flex-direction:column}
+    .drawer-body a{padding:14px 16px;border-bottom:1px solid #f2f4f4;font-weight:800}
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate;overflow:hidden}
+    .layer{position:absolute;inset:0;pointer-events:none}
+    .h1{background:radial-gradient(900px 540px at 6% -10%, rgba(183,228,216,.5), transparent)}
+    .h2{background:url('https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=1600') center/cover no-repeat;opacity:.18;mix-blend:multiply}
+    .h3{background:radial-gradient(1100px 600px at 100% -2%, rgba(213,184,135,.25), transparent)}
+    .hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;min-height:78vh;align-items:center;padding-block:86px}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(36px,4vw,62px);line-height:1.07;margin:0 0 10px;letter-spacing:.2px}
+    .lead{font-size:clamp(16px,1.2vw,19px);color:var(--ink-2);max-width:56ch}
+    .hero-card{background:var(--card);border:1px solid #e7ecec;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
+    .metric{background:linear-gradient(180deg,#fbfdfc,#fff);border:1px solid #e7ecec;border-radius:16px;padding:14px;text-align:center}
+    .metric strong{display:block;font-size:22px}
+
+    /* Sections */
+    section{padding-block:80px}
+    .section-title{font-family:"Playfair Display",serif;font-size:34px;margin:0 0 10px}
+    .section-sub{color:var(--muted);margin:0 0 28px}
+
+    /* Spécialités */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:var(--card);border:1px solid #e7ecec;border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(0,0,0,.12)}
+    .card h3{margin:0 0 8px;font-size:20px}
+
+    /* Équipe médicale */
+    .team{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .member{padding:18px;border:1px solid #e7ecec;border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+    .avatar{aspect-ratio:1/1;border-radius:18px;overflow:hidden;border:1px solid #e7ecec;background:#fff}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block;image-rendering:-webkit-optimize-contrast}
+    .role{color:var(--muted);font-weight:700;font-size:14px;margin-top:8px}
+    .langs{font-size:12px;color:#6e7d7d}
+
+    /* Tarifs */
+    table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e7ecec;border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+    th,td{padding:14px 16px;text-align:left}
+    thead th{background:#f7fbfa;font-weight:900}
+    tbody tr+tr td{border-top:1px solid #eef2f2}
+
+    /* Témoignages */
+    .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .quote{background:linear-gradient(180deg,#fbfdfc,#fff);border:1px solid #e7ecec;border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .q{font-family:"Playfair Display",serif;font-size:18px}
+
+    /* Blog */
+    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .post{padding:0;border-radius:var(--radius);overflow:hidden;border:1px solid #e7ecec;background:#fff;box-shadow:var(--shadow)}
+    .post .cover{width:100%;height:220px;object-fit:cover}
+    .post .content{padding:18px}
+
+    /* FAQ */
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    details{border:1px solid #e7ecec;border-radius:16px;padding:14px;background:#fff}
+    summary{font-weight:900;cursor:pointer}
+
+    /* CTA band */
+    .cta{padding:50px;border-radius:22px;background:linear-gradient(135deg, rgba(10,109,119,.08), #fff);border:1px solid #e7ecec;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .cta .cta-text{font-family:"Playfair Display",serif;font-size:26px}
+
+    /* Footer */
+    footer{padding-block:70px;border-top:1px solid #e7ecec;background:var(--footer);color:#e8f0f0}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr;gap:28px}
+    .footer-logo{font-family:"Playfair Display",serif;font-weight:700;font-size:22px;color:#e8f0f0}
+    .divider{height:1px;background:linear-gradient(90deg,transparent, rgba(213,184,135,.7), transparent);margin:18px 0}
+    .small{color:#b7c5c5;font-size:14px}
+    .credit{margin-top:10px;font-size:14px;color:#cad6d6}
+
+    /* Back-to-top */
+    .to-top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:999px;border:0;background:#0b1212;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0;visibility:hidden;transition:.25s;z-index:1100}
+    .to-top.show{opacity:1;visibility:visible}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1;transform:translateY(0)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .container{grid-template-columns:1fr}
+      .grid-3,.team,.testi,.posts,.faq{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      nav{display:none}
+      .hamburger{display:flex}
+      .actions .btn.soft{display:none}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Navigation principale">
+      <div class="brand" aria-label="Page d’accueil">
+        <div class="logo-badge">C</div>
+        <div class="logo">Clinéa Santé</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#specialites" data-i18n="nav.spec">Spécialités</a></li>
+          <li><a href="#equipe" data-i18n="nav.team">Équipe</a></li>
+          <li><a href="#tarifs" data-i18n="nav.pricing">Tarifs</a></li>
+          <li><a href="#blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <!-- Tous les CTA existants redirigent vers WhatsApp (démo) -->
+        <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="nav.cta">Prendre rendez‑vous</a>
+        <button class="lang" id="langSwitch" aria-label="Changer de langue">FR / EN</button>
+        <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="backdrop" id="backdrop"></div>
+    <aside class="mobile-drawer" id="drawer" aria-hidden="true">
+      <div class="drawer-head">
+        <div class="title">Menu</div>
+        <button class="drawer-close" id="drawerClose">Fermer ✕</button>
+      </div>
+      <div class="drawer-body">
+        <a href="#specialites" data-i18n="nav.spec">Spécialités</a>
+        <a href="#equipe" data-i18n="nav.team">Équipe</a>
+        <a href="#tarifs" data-i18n="nav.pricing">Tarifs</a>
+        <a href="#blog" data-i18n="nav.blog">Blog</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" style="margin:12px;">Prendre rendez‑vous</a>
+      </div>
+    </aside>
+  </header>
+
+  <section class="hero" aria-label="Présentation">
+    <div class="layer h1" aria-hidden="true"></div>
+    <div class="layer h2" aria-hidden="true"></div>
+    <div class="layer h3" aria-hidden="true"></div>
+    <div class="container">
+      <div>
+        <h1 class="reveal" data-i18n="hero.title">Votre santé, notre excellence.</h1>
+        <p class="lead reveal" data-i18n="hero.lead">Un centre médical premium où chaque détail compte : expertise pluridisciplinaire, équipements de pointe, accueil soigné.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap" class="reveal">
+          <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="hero.cta1">Prendre rendez‑vous</a>
+          <a class="btn soft" href="#specialites" data-i18n="hero.cta2">Découvrir nos spécialités</a>
+        </div>
+      </div>
+      <div class="hero-card reveal" role="region" aria-label="Synthèse">
+        <strong data-i18n="hero.card">Des soins précis, un confort absolu.</strong>
+        <div class="metrics">
+          <div class="metric"><small data-i18n="hero.m1">Délais de RDV</small><strong>24‑72h</strong></div>
+          <div class="metric"><small data-i18n="hero.m2">Satisfaction</small><strong>4.9/5</strong></div>
+          <div class="metric"><small data-i18n="hero.m3">Spécialités</small><strong>12</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="specialites" class="container" aria-labelledby="spec-title">
+      <h2 class="section-title reveal" id="spec-title" data-i18n="spec.title">Spécialités</h2>
+      <p class="section-sub reveal" data-i18n="spec.lead">Une équipe pluridisciplinaire pour un parcours fluide.</p>
+      <div class="grid-3">
+        <article class="card reveal"><h3 data-i18n="spec.s1.t">Médecine générale</h3><p data-i18n="spec.s1.d">Consultations adultes/enfants, prévention, suivi maladies chroniques.</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></article>
+        <article class="card reveal"><h3 data-i18n="spec.s2.t">Pédiatrie</h3><p data-i18n="spec.s2.d">Suivi nourrisson à ado, vaccinations, conseils parentaux.</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></article>
+        <article class="card reveal"><h3 data-i18n="spec.s3.t">Gynécologie</h3><p data-i18n="spec.s3.d">Prévention, dépistages, suivi contraception et grossesse.</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></article>
+        <article class="card reveal"><h3 data-i18n="spec.s4.t">Dermatologie</h3><p data-i18n="spec.s4.d">Acné, eczéma, dépistage des lésions cutanées.</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></article>
+        <article class="card reveal"><h3 data-i18n="spec.s5.t">Cardiologie</h3><p data-i18n="spec.s5.d">Bilan, HHTA, ECG, épreuve d’effort (démo).</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></article>
+        <article class="card reveal"><h3 data-i18n="spec.s6.t">ORL</h3><p data-i18n="spec.s6.d">Allergies, sinusites, dépistage auditif.</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></article>
+      </div>
+    </section>
+
+    <section id="equipe" class="container" aria-labelledby="team-title">
+      <h2 class="section-title reveal" id="team-title" data-i18n="team.title">Équipe médicale</h2>
+      <p class="section-sub reveal" data-i18n="team.lead">Des praticiens expérimentés, à l’écoute, soutenus par un plateau technique moderne.</p>
+      <div class="team">
+        <article class="member reveal">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&auto=format&fit=crop&w=900" alt="Portrait Dr. Sofia Benali, médecin généraliste" loading="lazy"></div>
+          <h3>Dr. Sofia Benali</h3>
+          <div class="role" data-i18n="team.r1">Médecine générale</div>
+          <div class="langs">FR • EN</div>
+        </article>
+        <article class="member reveal">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1559839735-2b4e6b8ed2a5?q=80&auto=format&fit=crop&w=900" alt="Portrait Dr. Marc Duvivier, pédiatre" loading="lazy"></div>
+          <h3>Dr. Marc Duvivier</h3>
+          <div class="role" data-i18n="team.r2">Pédiatrie</div>
+          <div class="langs">FR • EN</div>
+        </article>
+        <article class="member reveal">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1559839733-5f0b9d1f1e7b?q=80&auto=format&fit=crop&w=900" alt="Portrait Dr. Claire Monnet, gynécologue" loading="lazy"></div>
+          <h3>Dr. Claire Monnet</h3>
+          <div class="role" data-i18n="team.r3">Gynécologie</div>
+          <div class="langs">FR • EN</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="tarifs" class="container" aria-labelledby="pricing-title">
+      <h2 class="section-title reveal" id="pricing-title" data-i18n="pricing.title">Créneaux & Tarifs</h2>
+      <p class="section-sub reveal" data-i18n="pricing.lead">Transparence et simplicité. Tiers‑payant mutuelles (démo).</p>
+      <table class="reveal" aria-label="Table des tarifs">
+        <thead><tr><th data-i18n="pricing.th1">Acte</th><th data-i18n="pricing.th2">Tarif</th><th data-i18n="pricing.th3">Action</th></tr></thead>
+        <tbody>
+          <tr><td data-i18n="pricing.row1.act">Consultation générale</td><td>30€</td><td><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></td></tr>
+          <tr><td data-i18n="pricing.row2.act">Consultation pédiatrique</td><td>35€</td><td><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></td></tr>
+          <tr><td data-i18n="pricing.row3.act">Suivi gynécologique</td><td>40€</td><td><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="container" aria-labelledby="journey-title">
+      <h2 class="section-title reveal" id="journey-title" data-i18n="journey.title">Parcours patient</h2>
+      <p class="section-sub reveal" data-i18n="journey.lead">Trois étapes claires pour un suivi efficace.</p>
+      <div class="grid-3">
+        <article class="card reveal"><h3 data-i18n="journey.s1.t">1) Prise de RDV</h3><p data-i18n="journey.s1.d">Choisissez la spécialité et l’horaire. Nous confirmons rapidement.</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Réserver</a></article>
+        <article class="card reveal"><h3 data-i18n="journey.s2.t">2) Consultation</h3><p data-i18n="journey.s2.d">Écoute, examen, protocole clair et ordonnances si besoin.</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.ask">Poser une question</a></article>
+        <article class="card reveal"><h3 data-i18n="journey.s3.t">3) Suivi</h3><p data-i18n="journey.s3.d">Résultats, rappels et ajustements — on reste disponibles.</p><a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.follow">Planifier un suivi</a></article>
+      </div>
+    </section>
+
+    <section id="blog" class="container" aria-labelledby="blog-title">
+      <h2 class="section-title reveal" id="blog-title" data-i18n="blog.title">Blog santé</h2>
+      <p class="section-sub reveal" data-i18n="blog.lead">Conseils pratiques et prévention. Lectures rapides.</p>
+      <div class="posts">
+        <article class="post reveal" aria-labelledby="p1">
+          <img class="cover" src="https://images.unsplash.com/photo-1516542076529-1ea3854896e1?q=80&auto=format&fit=crop&w=1600" alt="Prévention santé quotidienne" loading="lazy">
+          <div class="content">
+            <h3 id="p1" data-i18n="blog.p1.t">Prévention au quotidien</h3>
+            <p class="small" data-i18n="blog.p1.d">Sommeil, hydratation, vaccination : 6 réflexes faciles à adopter.</p>
+            <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.ask">Poser une question</a>
+          </div>
+        </article>
+        <article class="post reveal" aria-labelledby="p2">
+          <img class="cover" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&auto=format&fit=crop&w=1600" alt="Consultation pédiatrique" loading="lazy">
+          <div class="content">
+            <h3 id="p2" data-i18n="blog.p2.t">Pédiatrie : quand consulter ?</h3>
+            <p class="small" data-i18n="blog.p2.d">Fièvre, toux, éruptions : nos repères pour décider sereinement.</p>
+            <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.ask">Poser une question</a>
+          </div>
+        </article>
+        <article class="post reveal" aria-labelledby="p3">
+          <img class="cover" src="https://images.unsplash.com/photo-1606813899341-7d225f81da3a?q=80&auto=format&fit=crop&w=1600" alt="Conseils dermatologiques" loading="lazy">
+          <div class="content">
+            <h3 id="p3" data-i18n="blog.p3.t">Peau : protéger et surveiller</h3>
+            <p class="small" data-i18n="blog.p3.d">Soleil, hydratation, contrôle des grains de beauté : les bons gestes.</p>
+            <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.ask">Poser une question</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="container" aria-labelledby="faq-title">
+      <h2 class="section-title reveal" id="faq-title" data-i18n="faq.title">Questions fréquentes</h2>
+      <div class="faq">
+        <details class="reveal"><summary data-i18n="faq.q1.q">Acceptez-vous les urgences ?</summary><div class="small" data-i18n="faq.q1.a">Dans cette démo, des créneaux de dépannage 24‑72h sont prévus.</div></details>
+        <details class="reveal"><summary data-i18n="faq.q2.q">Puis-je venir sans rendez‑vous ?</summary><div class="small" data-i18n="faq.q2.a">Nous recommandons de réserver pour limiter l’attente.</div></details>
+        <details class="reveal"><summary data-i18n="faq.q3.q">Quels moyens de paiement ?</summary><div class="small" data-i18n="faq.q3.a">Carte, mobile, virements (démo).</div></details>
+        <details class="reveal"><summary data-i18n="faq.q4.q">Proposez-vous la téléconsultation ?</summary><div class="small" data-i18n="faq.q4.a">Oui, sur créneaux dédiés selon spécialité (démo).</div></details>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="cta reveal" role="region" aria-label="Action">
+        <div class="cta-text" data-i18n="cta.title">Besoin d’un avis médical ?</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Prendre rendez‑vous</a>
+          <a class="btn soft" href="#tarifs" data-i18n="cta.see">Voir les tarifs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid" role="contentinfo">
+      <div>
+        <div class="footer-logo">Clinéa Santé</div>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="small" data-i18n="footer.addr">Adresse fictive (démo). Horaires : L‑S 08:00‑19:00.</p>
+        <p class="small">© <span id="year"></span> Clinéa Santé — <span data-i18n="footer.rights">Tous droits réservés</span>.</p>
+        <p class="credit">Site de démonstration créé par <strong>Martial HOSSOU</strong>, CEO de <strong>CREATIVE ENTREPRISE</strong>.</p>
+      </div>
+      <div>
+        <strong data-i18n="footer.lang">Langue</strong><br/>
+        <button class="lang" id="langSwitch2" aria-label="Changer de langue (pied)">FR / EN</button>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Retour en haut">▲</button>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" id="schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Clinéa Santé",
+    "address": {"@type": "PostalAddress", "addressLocality": "Démo", "addressCountry": "FR"},
+    "medicalSpecialty": ["PrimaryCare","Pediatrics","Dermatology","Gynecology"],
+    "url": "https://clinea-sante.example"
+  }
+  </script>
+
+  <script>
+    // Parallaxe (léger)
+    const layers = document.querySelectorAll('.layer');
+    function parallax(){
+      const y = window.scrollY || 0;
+      layers.forEach((l, i)=>{ l.style.transform = `translateY(${Math.min(70, y * (0.03 + i*0.02))}px)`; });
+    }
+    parallax();
+    window.addEventListener('scroll', parallax, {passive:true});
+
+    // Smooth scroll + fermeture tiroir
+    function smoothLinks(root=document){
+      root.querySelectorAll('[href^="#"],[data-scroll]').forEach(el=>{
+        el.addEventListener('click', e=>{
+          const sel = el.getAttribute('href') || el.dataset.scroll;
+          if(sel && sel.startsWith('#')){
+            const t = document.querySelector(sel);
+            if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); closeDrawer(); }
+          }
+        });
+      });
+    }
+    smoothLinks();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    }, {threshold:0.14});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Année courante
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile drawer
+    const drawer = document.getElementById('drawer');
+    const burger = document.getElementById('hamburger');
+    const backdrop = document.getElementById('backdrop');
+    const closeBtn = document.getElementById('drawerClose');
+    function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); backdrop.classList.add('show'); }
+    function closeDrawer(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); backdrop.classList.remove('show'); }
+    burger.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+
+    // Back-to-top
+    const toTop = document.getElementById('toTop');
+    function visToTop(){ window.scrollY > 400 ? toTop.classList.add('show') : toTop.classList.remove('show'); }
+    window.addEventListener('scroll', visToTop, {passive:true});
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // I18N
+    const I18N = {
+      fr: {
+        nav:{spec:"Spécialités", team:"Équipe", pricing:"Tarifs", blog:"Blog", faq:"FAQ", cta:"Prendre rendez‑vous"},
+        hero:{title:"Votre santé, notre excellence.", lead:"Un centre médical premium où chaque détail compte : expertise pluridisciplinaire, équipements de pointe, accueil soigné.", cta1:"Prendre rendez‑vous", cta2:"Découvrir nos spécialités", card:"Des soins précis, un confort absolu.", m1:"Délais de RDV", m2:"Satisfaction", m3:"Spécialités"},
+        spec:{title:"Spécialités", lead:"Une équipe pluridisciplinaire pour un parcours fluide.", s1:{t:"Médecine générale", d:"Consultations adultes/enfants, prévention, suivi maladies chroniques."}, s2:{t:"Pédiatrie", d:"Suivi nourrisson à ado, vaccinations, conseils parentaux."}, s3:{t:"Gynécologie", d:"Prévention, dépistages, suivi contraception et grossesse."}, s4:{t:"Dermatologie", d:"Acné, eczéma, dépistage des lésions cutanées."}, s5:{t:"Cardiologie", d:"Bilan, HHTA, ECG, épreuve d’effort (démo)."}, s6:{t:"ORL", d:"Allergies, sinusites, dépistage auditif."}},
+        team:{title:"Équipe médicale", lead:"Des praticiens expérimentés, à l’écoute, soutenus par un plateau technique moderne.", r1:"Médecine générale", r2:"Pédiatrie", r3:"Gynécologie"},
+        pricing:{title:"Créneaux & Tarifs", lead:"Transparence et simplicité. Tiers‑payant mutuelles (démo).", th1:"Acte", th2:"Tarif", th3:"Action", row1:{act:"Consultation générale"}, row2:{act:"Consultation pédiatrique"}, row3:{act:"Suivi gynécologique"}},
+        journey:{title:"Parcours patient", lead:"Trois étapes claires pour un suivi efficace.", s1:{t:"1) Prise de RDV", d:"Choisissez la spécialité et l’horaire. Nous confirmons rapidement."}, s2:{t:"2) Consultation", d:"Écoute, examen, protocole clair et ordonnances si besoin."}, s3:{t:"3) Suivi", d:"Résultats, rappels et ajustements — on reste disponibles."}},
+        blog:{title:"Blog santé", lead:"Conseils pratiques et prévention. Lectures rapides.", p1:{t:"Prévention au quotidien", d:"Sommeil, hydratation, vaccination : 6 réflexes faciles à adopter."}, p2:{t:"Pédiatrie : quand consulter ?", d:"Fièvre, toux, éruptions : nos repères pour décider sereinement."}, p3:{t:"Peau : protéger et surveiller", d:"Soleil, hydratation, contrôle des grains de beauté : les bons gestes."}},
+        faq:{title:"Questions fréquentes", q1:{q:"Acceptez-vous les urgences ?", a:"Dans cette démo, des créneaux de dépannage 24‑72h sont prévus."}, q2:{q:"Puis-je venir sans rendez‑vous ?", a:"Nous recommandons de réserver pour limiter l’attente."}, q3:{q:"Quels moyens de paiement ?", a:"Carte, mobile, virements (démo)."}, q4:{q:"Proposez-vous la téléconsultation ?", a:"Oui, sur créneaux dédiés selon spécialité (démo)."}},
+        cta:{title:"Besoin d’un avis médical ?", book:"Prendre rendez‑vous", see:"Voir les tarifs", ask:"Poser une question", follow:"Planifier un suivi"},
+        footer:{addr:"Adresse fictive (démo). Horaires : L‑S 08:00‑19:00.", rights:"Tous droits réservés", lang:"Langue"}
+      },
+      en: {
+        nav:{spec:"Specialties", team:"Team", pricing:"Pricing", blog:"Blog", faq:"FAQ", cta:"Book appointment"},
+        hero:{title:"Your health, our excellence.", lead:"A premium medical center where every detail matters: multidisciplinary expertise, advanced equipment, refined reception.", cta1:"Book appointment", cta2:"See specialties", card:"Precise care, absolute comfort.", m1:"Appointment delay", m2:"Satisfaction", m3:"Specialties"},
+        spec:{title:"Specialties", lead:"A multidisciplinary team for a smooth journey.", s1:{t:"Primary care", d:"Adults/children, prevention, chronic disease follow‑up."}, s2:{t:"Pediatrics", d:"From newborn to teen, vaccinations, parental advice."}, s3:{t:"Gynecology", d:"Prevention, screenings, contraception & pregnancy follow‑up."}, s4:{t:"Dermatology", d:"Acne, eczema, skin lesion screening."}, s5:{t:"Cardiology", d:"Check‑ups, HTN, ECG, stress test (demo)."}, s6:{t:"ENT", d:"Allergies, sinusitis, hearing screening."}},
+        team:{title:"Medical team", lead:"Experienced physicians supported by a modern technical platform.", r1:"Primary care", r2:"Pediatrics", r3:"Gynecology"},
+        pricing:{title:"Slots & Pricing", lead:"Transparent and simple. Third‑party payment (demo).", th1:"Service", th2:"Price", th3:"Action", row1:{act:"General consultation"}, row2:{act:"Pediatric consultation"}, row3:{act:"Gynecological follow‑up"}},
+        journey:{title:"Patient journey", lead:"Three clear steps for an effective follow‑up.", s1:{t:"1) Booking", d:"Choose specialty and time. Quick confirmation."}, s2:{t:"2) Consultation", d:"Listening, exam, clear protocol and prescriptions if needed."}, s3:{t:"3) Follow‑up", d:"Results, reminders and adjustments — we stay available."}},
+        blog:{title:"Health blog", lead:"Practical tips & prevention. Quick reads.", p1:{t:"Everyday prevention", d:"Sleep, hydration, vaccination: 6 easy habits."}, p2:{t:"Pediatrics: when to consult?", d:"Fever, cough, rashes: our guidelines."}, p3:{t:"Skin: protect & monitor", d:"Sun, hydration, mole checks: best practices."}},
+        faq:{title:"FAQ", q1:{q:"Do you accept urgencies?", a:"In this demo, 24‑72h emergency slots are available."}, q2:{q:"Can I come without an appointment?", a:"We recommend booking to reduce waiting time."}, q3:{q:"Payment methods?", a:"Card, mobile, wire (demo)."}, q4:{q:"Teleconsultation?", a:"Yes, on dedicated slots depending on specialty (demo)."}},
+        cta:{title:"Need a medical opinion?", book:"Book appointment", see:"See pricing", ask:"Ask a question", follow:"Plan a follow‑up"},
+        footer:{addr:"Fictitious address (demo). Hours: Mon‑Sat 08:00‑19:00.", rights:"All rights reserved", lang:"Language"}
+      }
+    };
+
+    function applyI18n(locale){
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const path = el.getAttribute('data-i18n').split('.');
+        let val = I18N[locale];
+        for(const p of path){ val = val?.[p]; }
+        if(typeof val === 'string'){ el.textContent = val; }
+      });
+      document.documentElement.lang = locale === 'fr' ? 'fr' : 'en';
+      localStorage.setItem('CLINEA_LANG', locale);
+    }
+
+    const saved = localStorage.getItem('CLINEA_LANG') || (navigator.language?.startsWith('fr') ? 'fr' : 'en');
+    applyI18n(saved);
+    function toggleLang(){ applyI18n((localStorage.getItem('CLINEA_LANG') === 'fr') ? 'en' : 'fr'); }
+    document.getElementById('langSwitch').addEventListener('click', toggleLang);
+    document.getElementById('langSwitch2').addEventListener('click', toggleLang);
+  </script>
+</body>
+</html>
