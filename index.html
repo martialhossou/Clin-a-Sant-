@@ -4,27 +4,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Clinéa Santé — Centre médical (Démo)</title>
-  <meta name="description" content="Centre médical contemporain. Spécialités, équipe, tarifs, parcours patient, FAQ et articles. Design ultra‑pro, images HD responsives, mobile‑first. CTA → WhatsApp. FR/EN." />
+  <meta name="description" content="Centre médical contemporain. Spécialités, équipe, tarifs, parcours patient, FAQ et articles. Design ultra‑pro, images HD responsives. CTA → WhatsApp. FR/EN." />
   <meta property="og:title" content="Clinéa Santé — Centre médical" />
   <meta property="og:description" content="Design moderne, éditorial et très pro. Images HD optimisées pour mobile et PC. FR/EN. CTA → WhatsApp." />
   <meta name="theme-color" content="#0B132B" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Précharge l'image héro pour éviter le clignotement sur mobile -->
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=1600" imagesrcset="https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=800 800w, https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=1200 1200w, https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=1600 1600w" imagesizes="(max-width: 980px) 100vw, 44vw">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Précharge l'image héro (Picsum: fiable, CORS OK) -->
+  <link rel="preload" as="image" href="https://picsum.photos/id/1025/1600/1000" imagesrcset="https://picsum.photos/id/1025/800/500 800w, https://picsum.photos/id/1025/1200/750 1200w, https://picsum.photos/id/1025/1600/1000 1600w" imagesizes="(max-width: 980px) 100vw, 48vw">
+
   <style>
     :root{
-      --ink:#0B132B;            /* bleu‑navy profond */
-      --ink-2:#3B445A;          /* texte secondaire */
-      --bg:#FAFAFB;             /* quasi‑blanc moderne */
+      --ink:#0B132B;             /* texte principal */
+      --ink-2:#3B445A;           /* texte secondaire */
+      --bg:#ffffff;              /* blanc très propre */
       --muted:#7C859F;
-      --accent:#2EC4B6;         /* cyan clinique */
-      --accent-2:#FF6B6B;       /* corail pour appels visuels */
-      --line:#E9ECF3;           /* séparateurs fins */
-      --maxw:1200px;
+      --accent:#2EC4B6;          /* cyan clinique */
+      --line:#E7EBF3;            /* séparateurs fins */
+      --card:#ffffff;
+      --shadow:0 14px 34px rgba(10,18,33,.07);
       --radius:16px;
+      --maxw:1200px;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.7}
@@ -32,89 +37,88 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
 
-    /* Header — barre propre, sans ombre (différent du site 1) */
-    header{position:sticky;top:0;z-index:50;background:rgba(250,250,251,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;min-height:72px}
+    /* Header */
+    header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;min-height:74px}
     .brand{display:flex;align-items:center;gap:14px}
-    .logo{font-family:Sora,system-ui;letter-spacing:.2px;font-weight:700}
-    .logo-mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 90deg, var(--accent), #7ad9cf, #a0f0e6);}    
+    .logo{font-family:Sora,system-ui;font-weight:700;letter-spacing:.2px}
+    .logo-mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 90deg, var(--accent), #7ad9cf, #a0f0e6)}
     nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
     nav a{font-weight:700;position:relative}
     nav a:after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .25s}
     nav a:hover:after{width:100%}
-    .actions{display:flex;align-items:center;gap:10px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:.7rem 1rem;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:700}
-    .btn.primary{background:var(--ink);color:#fff;border-color:#0B132B}
+    .actions{display:flex;align-items:center;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:.85rem 1.2rem;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:800}
+    .btn.primary{background:#0B132B;color:#fff;border-color:#0B132B}
     .btn.link{border:0;background:transparent;color:var(--accent);padding:0;font-weight:800}
-    .lang{border:1px solid var(--line);background:#fff;border-radius:12px;padding:.5rem .8rem;font-weight:700}
+    .lang{border:1px solid var(--line);background:#fff;border-radius:12px;padding:.55rem .9rem;font-weight:800}
 
-    /* Mobile menu */
+    /* Mobile menu (opaque) */
     .hamburger{display:none;flex-direction:column;gap:4px;border:0;background:#fff;padding:10px;border:1px solid var(--line);border-radius:12px}
     .hamburger span{width:26px;height:3px;background:#0B132B;border-radius:6px}
-    .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:.25s;z-index:49}
+    .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:.25s;z-index:59}
     .backdrop.show{opacity:1;visibility:visible}
-    .mobile-drawer{position:fixed;top:0;right:0;height:100%;width:min(84vw,380px);transform:translateX(100%);transition:transform .35s ease;background:#fff;border-left:1px solid var(--line);z-index:50;display:flex;flex-direction:column}
+    .mobile-drawer{position:fixed;top:0;right:0;height:100%;width:min(84vw,380px);transform:translateX(100%);transition:transform .35s ease;background:#ffffff;border-left:1px solid var(--line);z-index:60;display:flex;flex-direction:column}
     .mobile-drawer.open{transform:translateX(0)}
-    .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
-    .drawer-close{border:0;background:#0B132B;color:#fff;padding:.55rem .9rem;border-radius:12px;font-weight:800}
+    .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);background:#fff}
+    .drawer-close{border:0;background:#0B132B;color:#fff;padding:.6rem 1rem;border-radius:12px;font-weight:900}
     .drawer-body{padding:12px 6px;display:flex;flex-direction:column}
-    .drawer-body a{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:800}
+    .drawer-body a{padding:16px 18px;border-bottom:1px solid var(--line);font-weight:800}
 
-    /* Hero — style éditorial, sans cartes ombrées */
-    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-    .hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;min-height:72vh;align-items:center;padding-block:72px}
-    h1{font-family:Sora,system-ui;font-weight:700;font-size:clamp(34px,3.6vw,56px);line-height:1.06;margin:0 0 12px}
-    .lead{font-size:clamp(16px,1.2vw,19px);color:var(--ink-2);max-width:60ch}
-    .hero-visual{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1/1}
-    .hero-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05)}
-    .hero-accent{position:absolute;inset:auto -60px -60px auto;width:260px;height:260px;background:radial-gradient(closest-side, rgba(46,196,182,.35), transparent 70%);filter:blur(18px);border-radius:50%}
+    /* Hero + Parallaxe pro */
+    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);isolation:isolate}
+    .hero .container{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;min-height:72vh;align-items:center;padding-block:86px}
+    h1{font-family:Sora,system-ui;font-weight:700;font-size:clamp(36px,4vw,60px);line-height:1.06;margin:0 0 12px}
+    .lead{font-size:clamp(16px,1.2vw,19px);color:var(--ink-2);max-width:62ch}
+    .hero-visual{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow)}
+    .hero-visual img{width:100%;height:100%;object-fit:cover}
+    /* couches parallaxe */
+    .px1,.px2,.px3{position:absolute;inset:auto;pointer-events:none;border-radius:50%}
+    .px1{right:-60px;bottom:-60px;width:260px;height:260px;background:radial-gradient(closest-side, rgba(46,196,182,.28), transparent 70%);filter:blur(14px)}
+    .px2{left:-80px;top:-80px;width:320px;height:320px;background:radial-gradient(closest-side, rgba(11,19,43,.08), transparent 70%);filter:blur(16px)}
+    .px3{right:10%;top:-60px;width:180px;height:180px;background:radial-gradient(closest-side, rgba(122,217,207,.24), transparent 70%);filter:blur(12px)}
 
-    /* Sections — lignes et espaces, pas de cartes lourdes */
-    section{padding-block:80px}
-    .section-title{font-family:Sora,system-ui;font-size:32px;margin:0 0 10px}
-    .section-sub{color:var(--muted);margin:0 0 24px}
+    /* Sections */
+    section{padding-block:82px}
+    .section-title{font-family:Sora,system-ui;font-size:30px;margin:0 0 10px}
+    .section-sub{color:var(--muted);margin:0 0 26px}
 
-    /* Spécialités — grille plate */
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-    .spec{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:#fff}
-    .spec h3{margin:0 0 6px;font-size:18px}
-    .spec .cta{display:inline-flex;align-items:center;gap:8px;font-weight:800}
+    /* Spécialités */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+    .spec{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:#fff;box-shadow:var(--shadow)}
+    .spec h3{margin:0 0 8px;font-size:18px}
+    .spec .cta{display:inline-flex;align-items:center;gap:8px;font-weight:900}
     .spec .cta svg{width:16px;height:16px}
 
-    /* Équipe — portraits ronds HD / responsives */
-    .team{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-    .member{display:grid;grid-template-columns:86px 1fr;gap:14px;border-bottom:1px solid var(--line);padding-bottom:18px}
+    /* Équipe */
+    .team{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+    .member{display:grid;grid-template-columns:86px 1fr;gap:14px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px;box-shadow:var(--shadow)}
     .avatar{width:86px;height:86px;border-radius:50%;overflow:hidden}
     .avatar img{width:100%;height:100%;object-fit:cover}
     .role{color:var(--muted);font-weight:700;font-size:14px;margin-top:4px}
     .langs{font-size:12px;color:#8a93ad}
 
-    /* Tarifs — tableau très sobre, sans ombre */
-    table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+    /* Tarifs */
+    table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
     th,td{padding:14px 16px;text-align:left}
-    thead th{background:#F4F6FA;font-weight:800}
+    thead th{background:#F4F6FA;font-weight:900}
     tbody tr+tr td{border-top:1px solid var(--line)}
 
-    /* Témoignages — citations éditoriales */
-    .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-    .quote{border-left:3px solid var(--accent);padding:6px 0 6px 14px;color:var(--ink-2)}
-    .q{font-family:Sora,system-ui;font-size:18px}
-
-    /* Blog — cartes plates avec images responsives */
-    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-    .post{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+    /* Blog */
+    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+    .post{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
     .post .cover{width:100%;aspect-ratio:16/10;object-fit:cover}
     .post .content{padding:16px}
 
     /* FAQ */
-    .faq{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    details{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    details{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff;box-shadow:var(--shadow)}
     summary{font-weight:900;cursor:pointer}
 
-    /* CTA bandeau — minimal */
-    .band{padding:38px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(135deg, #fff, #F8FAFF)}
+    /* Bande CTA */
+    .band{padding:40px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(135deg, #fff, #F8FAFF);box-shadow:var(--shadow)}
 
-    /* Footer — clair, centré, très minimal */
+    /* Footer (inchangé, validé) */
     footer{padding-block:48px;border-top:1px solid var(--line);background:#fff;color:#485067}
     .foot{max-width:var(--maxw);margin:auto;text-align:center;padding-inline:24px}
     .foot .brand{justify-content:center}
@@ -122,13 +126,13 @@
     .foot .credit{margin-top:10px;font-size:14px;color:#8C97B3}
 
     /* Back-to-top */
-    .to-top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#0B132B;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0;visibility:hidden;transition:.25s;z-index:1100}
+    .to-top{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:999px;border:1px solid var(--line);background:#0B132B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0;visibility:hidden;transition:.25s;z-index:70}
     .to-top.show{opacity:1;visibility:visible}
 
     /* Responsive */
     @media (max-width: 980px){
       .hero .container{grid-template-columns:1fr}
-      .grid-3,.team,.testi,.posts,.faq{grid-template-columns:1fr}
+      .grid-3,.team,.posts,.faq{grid-template-columns:1fr}
       .member{grid-template-columns:72px 1fr}
       .avatar{width:72px;height:72px}
       nav{display:none}
@@ -137,7 +141,7 @@
   </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Aller au contenu principal</a>
+  <!-- Skip-link retiré comme demandé -->
   <header>
     <div class="container nav" role="navigation" aria-label="Navigation principale">
       <div class="brand" aria-label="Page d’accueil">
@@ -154,6 +158,7 @@
         </ul>
       </nav>
       <div class="actions">
+        <a class="btn" href="#specialites" data-i18n="nav.see">Voir les soins</a>
         <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="nav.cta">Prendre rendez‑vous</a>
         <button class="lang" id="langSwitch" aria-label="Changer de langue">FR / EN</button>
         <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
@@ -182,21 +187,23 @@
     <div class="container">
       <div>
         <h1 data-i18n="hero.title">La médecine, précise et humaine.</h1>
-        <p class="lead" data-i18n="hero.lead">Centre médical pluridisciplinaire : parcours fluide, protocoles clairs, équipements modernes. Zéro compromis sur l'expérience patient.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <p class="lead" data-i18n="hero.lead">Centre pluridisciplinaire : parcours fluide, protocoles clairs, équipements modernes. Zéro compromis sur l’expérience patient.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
           <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="hero.cta1">Prendre rendez‑vous</a>
           <a class="btn" href="#specialites" data-i18n="hero.cta2">Voir les spécialités</a>
         </div>
       </div>
       <div class="hero-visual">
         <img 
-          src="https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=1200" 
-          srcset="https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=800 800w, https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=1200 1200w, https://images.unsplash.com/photo-1580281657521-6c6c5b9c2a9a?q=80&auto=format&fit=crop&w=1600 1600w" 
-          sizes="(max-width: 980px) 100vw, 44vw" 
-          alt="Couloir clinique moderne lumineux" 
-          width="1200" height="1200" 
+          src="https://picsum.photos/id/1025/1200/750" 
+          srcset="https://picsum.photos/id/1025/800/500 800w, https://picsum.photos/id/1025/1200/750 1200w, https://picsum.photos/id/1025/1600/1000 1600w" 
+          sizes="(max-width: 980px) 100vw, 48vw" 
+          alt="Espace clinique moderne lumineux" 
+          width="1200" height="750" 
           loading="eager" fetchpriority="high" decoding="async"/>
-        <div class="hero-accent" aria-hidden="true"></div>
+        <div class="px1" aria-hidden="true"></div>
+        <div class="px2" aria-hidden="true"></div>
+        <div class="px3" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -221,22 +228,22 @@
       <div class="team">
         <article class="member">
           <div class="avatar"><img 
-            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&auto=format&fit=crop&w=300" 
-            srcset="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&auto=format&fit=crop&w=120 120w, https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&auto=format&fit=crop&w=240 240w, https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&auto=format&fit=crop&w=360 360w" 
+            src="https://picsum.photos/seed/sofia/300/300" 
+            srcset="https://picsum.photos/seed/sofia/120/120 120w, https://picsum.photos/seed/sofia/240/240 240w, https://picsum.photos/seed/sofia/360/360 360w" 
             sizes="86px" width="86" height="86" alt="Portrait du Dr. Sofia Benali" loading="lazy" decoding="async"></div>
           <div><h3>Dr. Sofia Benali</h3><div class="role" data-i18n="team.r1">Médecine générale</div><div class="langs">FR • EN</div></div>
         </article>
         <article class="member">
           <div class="avatar"><img 
-            src="https://images.unsplash.com/photo-1559839735-2b4e6b8ed2a5?q=80&auto=format&fit=crop&w=300" 
-            srcset="https://images.unsplash.com/photo-1559839735-2b4e6b8ed2a5?q=80&auto=format&fit=crop&w=120 120w, https://images.unsplash.com/photo-1559839735-2b4e6b8ed2a5?q=80&auto=format&fit=crop&w=240 240w, https://images.unsplash.com/photo-1559839735-2b4e6b8ed2a5?q=80&auto=format&fit=crop&w=360 360w" 
+            src="https://picsum.photos/seed/marc/300/300" 
+            srcset="https://picsum.photos/seed/marc/120/120 120w, https://picsum.photos/seed/marc/240/240 240w, https://picsum.photos/seed/marc/360/360 360w" 
             sizes="86px" width="86" height="86" alt="Portrait du Dr. Marc Duvivier" loading="lazy" decoding="async"></div>
           <div><h3>Dr. Marc Duvivier</h3><div class="role" data-i18n="team.r2">Pédiatrie</div><div class="langs">FR • EN</div></div>
         </article>
         <article class="member">
           <div class="avatar"><img 
-            src="https://images.unsplash.com/photo-1559839733-5f0b9d1f1e7b?q=80&auto=format&fit=crop&w=300" 
-            srcset="https://images.unsplash.com/photo-1559839733-5f0b9d1f1e7b?q=80&auto=format&fit=crop&w=120 120w, https://images.unsplash.com/photo-1559839733-5f0b9d1f1e7b?q=80&auto=format&fit=crop&w=240 240w, https://images.unsplash.com/photo-1559839733-5f0b9d1f1e7b?q=80&auto=format&fit=crop&w=360 360w" 
+            src="https://picsum.photos/seed/claire/300/300" 
+            srcset="https://picsum.photos/seed/claire/120/120 120w, https://picsum.photos/seed/claire/240/240 240w, https://picsum.photos/seed/claire/360/360 360w" 
             sizes="86px" width="86" height="86" alt="Portrait du Dr. Claire Monnet" loading="lazy" decoding="async"></div>
           <div><h3>Dr. Claire Monnet</h3><div class="role" data-i18n="team.r3">Gynécologie</div><div class="langs">FR • EN</div></div>
         </article>
@@ -272,37 +279,37 @@
       <div class="posts">
         <article class="post" aria-labelledby="p1">
           <img class="cover" 
-               src="https://images.unsplash.com/photo-1516542076529-1ea3854896e1?q=80&auto=format&fit=crop&w=1200" 
-               srcset="https://images.unsplash.com/photo-1516542076529-1ea3854896e1?q=80&auto=format&fit=crop&w=640 640w, https://images.unsplash.com/photo-1516542076529-1ea3854896e1?q=80&auto=format&fit=crop&w=960 960w, https://images.unsplash.com/photo-1516542076529-1ea3854896e1?q=80&auto=format&fit=crop&w=1440 1440w" 
+               src="https://picsum.photos/id/1005/1200/750" 
+               srcset="https://picsum.photos/id/1005/640/400 640w, https://picsum.photos/id/1005/960/600 960w, https://picsum.photos/id/1005/1200/750 1200w" 
                sizes="(max-width: 980px) 96vw, 31vw" 
-               width="1200" height="750" alt="Prévention santé quotidienne" loading="lazy" decoding="async">
+               width="1200" height="750" alt="Hygiène de vie" loading="lazy" decoding="async">
           <div class="content">
             <h3 id="p1" data-i18n="blog.p1.t">Prévention au quotidien</h3>
-            <p class="small" data-i18n="blog.p1.d">Sommeil, hydratation, vaccination : 6 réflexes faciles à adopter.</p>
+            <p class="small" data-i18n="blog.p1.d">Sommeil, hydratation, vaccination : 6 réflexes faciles.</p>
             <a class="btn link" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.ask">Poser une question →</a>
           </div>
         </article>
         <article class="post" aria-labelledby="p2">
           <img class="cover" 
-               src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&auto=format&fit=crop&w=1200" 
-               srcset="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&auto=format&fit=crop&w=640 640w, https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&auto=format&fit=crop&w=960 960w, https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&auto=format&fit=crop&w=1440 1440w" 
+               src="https://picsum.photos/id/1011/1200/750" 
+               srcset="https://picsum.photos/id/1011/640/400 640w, https://picsum.photos/id/1011/960/600 960w, https://picsum.photos/id/1011/1200/750 1200w" 
                sizes="(max-width: 980px) 96vw, 31vw" 
                width="1200" height="750" alt="Consultation pédiatrique" loading="lazy" decoding="async">
           <div class="content">
             <h3 id="p2" data-i18n="blog.p2.t">Pédiatrie : quand consulter ?</h3>
-            <p class="small" data-i18n="blog.p2.d">Fièvre, toux, éruptions : nos repères pour décider sereinement.</p>
+            <p class="small" data-i18n="blog.p2.d">Fièvre, toux, éruptions : nos repères.</p>
             <a class="btn link" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.ask">Poser une question →</a>
           </div>
         </article>
         <article class="post" aria-labelledby="p3">
           <img class="cover" 
-               src="https://images.unsplash.com/photo-1606813899341-7d225f81da3a?q=80&auto=format&fit=crop&w=1200" 
-               srcset="https://images.unsplash.com/photo-1606813899341-7d225f81da3a?q=80&auto=format&fit=crop&w=640 640w, https://images.unsplash.com/photo-1606813899341-7d225f81da3a?q=80&auto=format&fit=crop&w=960 960w, https://images.unsplash.com/photo-1606813899341-7d225f81da3a?q=80&auto=format&fit=crop&w=1440 1440w" 
+               src="https://picsum.photos/id/1027/1200/750" 
+               srcset="https://picsum.photos/id/1027/640/400 640w, https://picsum.photos/id/1027/960/600 960w, https://picsum.photos/id/1027/1200/750 1200w" 
                sizes="(max-width: 980px) 96vw, 31vw" 
                width="1200" height="750" alt="Conseils dermatologiques" loading="lazy" decoding="async">
           <div class="content">
             <h3 id="p3" data-i18n="blog.p3.t">Peau : protéger et surveiller</h3>
-            <p class="small" data-i18n="blog.p3.d">Soleil, hydratation, contrôle des grains de beauté : les bons gestes.</p>
+            <p class="small" data-i18n="blog.p3.d">Soleil, hydratation, contrôle des grains de beauté.</p>
             <a class="btn link" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.ask">Poser une question →</a>
           </div>
         </article>
@@ -323,7 +330,7 @@
       <div class="band" role="region" aria-label="Action">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
           <div style="font-family:Sora,system-ui;font-weight:700;font-size:22px" data-i18n="cta.title">Besoin d’un avis médical ?</div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
             <a class="btn primary" href="https://wa.me/22952964028" target="_blank" rel="noopener" data-i18n="cta.book">Prendre rendez‑vous</a>
             <a class="btn" href="#tarifs" data-i18n="cta.see">Voir les tarifs</a>
           </div>
@@ -373,31 +380,47 @@
     window.addEventListener('scroll', visToTop, {passive:true});
     toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
+    // Parallaxe : translation douce des halos + zoom léger de l'image
+    const halos = document.querySelectorAll('.px1,.px2,.px3');
+    const heroImg = document.querySelector('.hero-visual img');
+    function parallax(){
+      const y = window.scrollY || 0;
+      halos.forEach((el,i)=>{
+        const k = [.06,.04,.08][i] || .05;
+        el.style.transform = `translateY(${Math.min(120, y*k)}px)`;
+      });
+      const scale = 1 + Math.min(0.06, y/6000);
+      heroImg.style.transform = `scale(${scale}) translateY(${Math.min(16, y*0.02)}px)`;
+      heroImg.style.transition = 'transform .12s ease-out';
+    }
+    parallax();
+    window.addEventListener('scroll', parallax, {passive:true});
+
     // I18N
     const I18N = {
       fr: {
-        nav:{spec:"Spécialités", team:"Équipe", pricing:"Tarifs", blog:"Blog", faq:"FAQ", cta:"Prendre rendez‑vous"},
-        hero:{title:"La médecine, précise et humaine.", lead:"Centre médical pluridisciplinaire : parcours fluide, protocoles clairs, équipements modernes. Zéro compromis sur l'expérience patient.", cta1:"Prendre rendez‑vous", cta2:"Voir les spécialités"},
+        nav:{spec:"Spécialités", team:"Équipe", pricing:"Tarifs", blog:"Blog", faq:"FAQ", see:"Voir les soins", cta:"Prendre rendez‑vous"},
+        hero:{title:"La médecine, précise et humaine.", lead:"Centre pluridisciplinaire : parcours fluide, protocoles clairs, équipements modernes. Zéro compromis sur l’expérience patient.", cta1:"Prendre rendez‑vous", cta2:"Voir les spécialités"},
         spec:{title:"Spécialités", lead:"Parcours coordonné, information claire, suivi continu.", s1:{t:"Médecine générale", d:"Consultations adultes/enfants, prévention, suivi maladies chroniques."}, s2:{t:"Pédiatrie", d:"Suivi nourrisson à ado, vaccinations, conseils parentaux."}, s3:{t:"Gynécologie", d:"Prévention, dépistages, suivi contraception et grossesse."}, s4:{t:"Dermatologie", d:"Acné, eczéma, dépistage des lésions cutanées."}, s5:{t:"Cardiologie", d:"Bilan, HTA, ECG, épreuve d’effort (démo)."}, s6:{t:"ORL", d:"Allergies, sinusites, dépistage auditif."}},
         team:{title:"Équipe médicale", lead:"Compétences complémentaires, écoute active, décisions partagées.", r1:"Médecine générale", r2:"Pédiatrie", r3:"Gynécologie"},
         pricing:{title:"Créneaux & Tarifs", lead:"Transparence simple. Tiers‑payant mutuelles (démo).", th1:"Acte", th2:"Tarif", th3:"Action", row1:{act:"Consultation générale"}, row2:{act:"Consultation pédiatrique"}, row3:{act:"Suivi gynécologique"}},
         journey:{title:"Parcours patient", lead:"Trois étapes claires pour avancer sereinement.", s1:{t:"1) Prise de RDV", d:"Choisissez spécialité et horaire, confirmation rapide."}, s2:{t:"2) Consultation", d:"Écoute, examen, protocole clair."}, s3:{t:"3) Suivi", d:"Résultats, rappels, ajustements."}},
-        blog:{title:"Blog santé", lead:"Conseils pratiques & prévention. Lectures rapides.", p1:{t:"Prévention au quotidien", d:"Sommeil, hydratation, vaccination : 6 réflexes faciles à adopter."}, p2:{t:"Pédiatrie : quand consulter ?", d:"Fièvre, toux, éruptions : nos repères pour décider sereinement."}, p3:{t:"Peau : protéger et surveiller", d:"Soleil, hydratation, contrôle des grains de beauté : les bons gestes."}},
+        blog:{title:"Blog santé", lead:"Conseils pratiques & prévention. Lectures rapides.", p1:{t:"Prévention au quotidien", d:"Sommeil, hydratation, vaccination : 6 réflexes faciles."}, p2:{t:"Pédiatrie : quand consulter ?", d:"Fièvre, toux, éruptions : nos repères."}, p3:{t:"Peau : protéger et surveiller", d:"Soleil, hydratation, contrôle des grains de beauté."}},
         faq:{title:"Questions fréquentes", q1:{q:"Acceptez-vous les urgences ?", a:"Dans cette démo, des créneaux de dépannage 24‑72h sont prévus."}, q2:{q:"Puis-je venir sans rendez‑vous ?", a:"Nous recommandons de réserver pour limiter l’attente."}, q3:{q:"Quels moyens de paiement ?", a:"Carte, mobile, virements (démo)."}, q4:{q:"Proposez-vous la téléconsultation ?", a:"Oui, sur créneaux dédiés selon spécialité (démo)."}},
         cta:{title:"Besoin d’un avis médical ?", book:"Prendre rendez‑vous", see:"Voir les tarifs", ask:"Poser une question", follow:"Planifier un suivi"},
-        footer:{addr:"Adresse fictive (démo). Horaires : L‑S 08:00‑19:00.", rights:"Tous droits réservés", lang:"Langue"}
+        footer:{addr:"Adresse fictive (démo). Horaires : L‑S 08:00‑19:00.", rights:"Tous droits réservés"}
       },
       en: {
-        nav:{spec:"Specialties", team:"Team", pricing:"Pricing", blog:"Blog", faq:"FAQ", cta:"Book appointment"},
-        hero:{title:"Medicine, precise and human.", lead:"Multidisciplinary medical center: smooth journey, clear protocols, modern equipment. Zero compromise on patient experience.", cta1:"Book appointment", cta2:"See specialties"},
-        spec:{title:"Specialties", lead:"Coordinated pathway, clear information, continuous follow‑up.", s1:{t:"Primary care", d:"Adults/children, prevention, chronic disease follow‑up."}, s2:{t:"Pediatrics", d:"Newborn to teen, vaccinations, parental advice."}, s3:{t:"Gynecology", d:"Prevention, screenings, contraception & pregnancy follow‑up."}, s4:{t:"Dermatology", d:"Acne, eczema, skin lesion screening."}, s5:{t:"Cardiology", d:"Check‑ups, HTN, ECG, stress test (demo)."}, s6:{t:"ENT", d:"Allergies, sinusitis, hearing screening."}},
+        nav:{spec:"Specialties", team:"Team", pricing:"Pricing", blog:"Blog", faq:"FAQ", see:"See care", cta:"Book appointment"},
+        hero:{title:"Medicine, precise and human.", lead:"Multidisciplinary center: smooth journey, clear protocols, modern equipment. Zero compromise on patient experience.", cta1:"Book appointment", cta2:"See specialties"},
+        spec:{title:"Specialties", lead:"Coordinated pathway, clear information, continuous follow‑up.", s1:{t:"Primary care", d:"Adults/children, prevention, chronic follow‑up."}, s2:{t:"Pediatrics", d:"Newborn to teen, vaccinations, parental advice."}, s3:{t:"Gynecology", d:"Prevention, screenings, contraception & pregnancy."}, s4:{t:"Dermatology", d:"Acne, eczema, skin lesion screening."}, s5:{t:"Cardiology", d:"Check‑ups, HTN, ECG, stress test (demo)."}, s6:{t:"ENT", d:"Allergies, sinusitis, hearing."}},
         team:{title:"Medical team", lead:"Complementary skills, active listening, shared decisions.", r1:"Primary care", r2:"Pediatrics", r3:"Gynecology"},
         pricing:{title:"Slots & Pricing", lead:"Transparent and simple. Third‑party payment (demo).", th1:"Service", th2:"Price", th3:"Action", row1:{act:"General consultation"}, row2:{act:"Pediatric consultation"}, row3:{act:"Gynecological follow‑up"}},
         journey:{title:"Patient journey", lead:"Three clear steps to move forward confidently.", s1:{t:"1) Booking", d:"Choose specialty and time, quick confirmation."}, s2:{t:"2) Consultation", d:"Listening, exam, clear protocol."}, s3:{t:"3) Follow‑up", d:"Results, reminders, adjustments."}},
-        blog:{title:"Health blog", lead:"Practical tips & prevention. Quick reads.", p1:{t:"Everyday prevention", d:"Sleep, hydration, vaccination: 6 easy habits."}, p2:{t:"Pediatrics: when to consult?", d:"Fever, cough, rashes: our guidelines."}, p3:{t:"Skin: protect & monitor", d:"Sun, hydration, mole checks: best practices."}},
-        faq:{title:"FAQ", q1:{q:"Do you accept urgencies?", a:"In this demo, 24‑72h emergency slots are available."}, q2:{q:"Walk‑ins?", a:"Booking recommended to reduce waiting time."}, q3:{q:"Payment methods?", a:"Card, mobile, wire (demo)."}, q4:{q:"Teleconsultation?", a:"Yes, on dedicated slots depending on specialty (demo)."}},
+        blog:{title:"Health blog", lead:"Practical tips & prevention. Quick reads.", p1:{t:"Everyday prevention", d:"Sleep, hydration, vaccination: 6 easy habits."}, p2:{t:"Pediatrics: when to consult?", d:"Fever, cough, rashes: our guidelines."}, p3:{t:"Skin: protect & monitor", d:"Sun, hydration, mole checks."}},
+        faq:{title:"FAQ", q1:{q:"Do you accept urgencies?", a:"In this demo, 24‑72h slots are available."}, q2:{q:"Walk‑ins?", a:"Booking recommended to reduce waiting time."}, q3:{q:"Payment methods?", a:"Card, mobile, wire (demo)."}, q4:{q:"Teleconsultation?", a:"Yes, on dedicated slots depending on specialty (demo)."}},
         cta:{title:"Need a medical opinion?", book:"Book appointment", see:"See pricing", ask:"Ask a question", follow:"Plan a follow‑up"},
-        footer:{addr:"Fictitious address (demo). Hours: Mon‑Sat 08:00‑19:00.", rights:"All rights reserved", lang:"Language"}
+        footer:{addr:"Fictitious address (demo). Hours: Mon‑Sat 08:00‑19:00.", rights:"All rights reserved"}
       }
     };
 
